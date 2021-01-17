@@ -1,3 +1,12 @@
+# React Todo List App
+
+Just trying out the basics of react following [React JS Crash Course](https://www.youtube.com/watch?v=sBws8MSXN7A).
+I have chosen slightly different ways of doing certain things but mostly followed how the instructor, Brad explained things.
+
+The rest of this README file is just boiler plate created by the create react app bootstrapper.
+
+An alternate way to learn the basic concepts would be to follow the online tutorial at [react.org](https://reactjs.org/tutorial/tutorial.html)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

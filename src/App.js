@@ -22,11 +22,25 @@ class App extends Component {
       }
     ]
   }
+
+  toggleCompleted = (id) => {
+    console.log(`${id} in app.js`)
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if(todo.id === id){
+          console.log(`Changing completed of todo item ${id}`);
+          console.table(todo);
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    });
+  }
   
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos}/>
+        <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted}/>
       </div>
       );
   }

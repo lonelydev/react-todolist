@@ -11,27 +11,31 @@ export class TodoItem extends Component {
             textDecoration: this.props.todo.completed ? 'line-through' : 'none'
         }
     }
-    /**
-     * Had this been a regular function and not an arrow function is that 
-     * reference to this will be undefined in a regular function context. 
-     * In order to get that explicitly working, you'd have to bind the method 
-     * to the object using this.markComplete.bind(this).
-     * that way any references to this will be bound to the properties of this class
-     * In order to avoid this complexity, we just declare the function as 
-     * an arrow function instead
-     * @param {*} event 
-     */
-    markComplete = (event) => {
-        console.log(this.props)
-    }
+
+    // /**
+    //  * Had this been a regular function and not an arrow function is that 
+    //  * reference to this will be undefined in a regular function context. 
+    //  * In order to get that explicitly working, you'd have to bind the method 
+    //  * to the object using this.markComplete.bind(this).
+    //  * that way any references to this will be bound to the properties of this class
+    //  * In order to avoid this complexity, we just declare the function as 
+    //  * an arrow function instead
+    //  * @param {*} event 
+    //  */
+    // toggleComplete = (event) => {
+    //     console.log(this.props)
+    // }
 
     render() {
+        const {id, title} = this.props.todo;
+        const toggleCompleted = this.props.toggleCompleted
         return (
             // inline styles requires double curly braces
             <div style={this.getStyle()}>
                 <p>
-                    <input type='checkbox' onChange={this.markComplete()}/> {' '}
-                    {this.props.todo.title}
+                    <input type='checkbox' 
+                    onChange={toggleCompleted.bind(this, id)}/> {' '}
+                    {title}
                 </p>
             </div>
         )

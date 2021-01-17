@@ -13,7 +13,7 @@ class App extends Component {
       {
         id: 2,
         title: 'Prepare dinner for Mrs',
-        completed: true
+        completed: false
       },
       {
         id: 3,
@@ -37,10 +37,20 @@ class App extends Component {
     });
   }
   
+  deleteItem = (id) => {
+    console.log(`${id} to be deleted`);
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted}/>
+        <Todos todos={this.state.todos} 
+        toggleCompleted={this.toggleCompleted}
+        deleteItem={this.deleteItem}
+        />
       </div>
       );
   }

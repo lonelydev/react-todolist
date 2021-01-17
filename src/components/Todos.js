@@ -8,7 +8,8 @@ class Todos extends Component {
         return this.props.todos.map(
             (todo) => (
                 <TodoItem key={todo.id} todo={todo} 
-                toggleCompleted={this.props.toggleCompleted}/>
+                toggleCompleted={this.props.toggleCompleted}
+                deleteItem={this.props.deleteItem} />
             ));
     }
 }

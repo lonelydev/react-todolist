@@ -28,14 +28,15 @@ export class TodoItem extends Component {
 
     render() {
         const {id, title} = this.props.todo;
-        const toggleCompleted = this.props.toggleCompleted
         return (
             // inline styles requires double curly braces
             <div style={this.getStyle()}>
                 <p>
                     <input type='checkbox' 
-                    onChange={toggleCompleted.bind(this, id)}/> {' '}
+                    onChange={this.props.toggleCompleted.bind(this, id)}/> {' '}
                     {title}
+                    <button onClick={this.props.deleteItem.bind(this, id)} 
+                    style={btnStyle}>x</button>
                 </p>
             </div>
         )
@@ -43,13 +44,17 @@ export class TodoItem extends Component {
 }
 
 TodoItem.propTypes = {
-    todo: PropTypes.array.isRequired
+    todo: PropTypes.object.isRequired
 }
 
-// if using an object as a style, you can replace the double curly braces where
-// it is being referenced with a single pair of curlies.
-const itemStyle = {
-    backgroundColor: '#f4f4f4'
+const btnStyle = {
+    background: '#ff0000',
+    colors: '#fff',
+    border: 'none',
+    padding: '5px 8px',
+    borderRadius: '50%',
+    cursor: 'pointer',
+    float: 'right'
 }
 
 // if you want dynamic styles, then you need to create a style function

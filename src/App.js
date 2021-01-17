@@ -26,12 +26,9 @@ class App extends Component {
   }
 
   toggleCompleted = (id) => {
-    console.log(`${id} in app.js`)
     this.setState({
       todos: this.state.todos.map(todo => {
         if(todo.id === id){
-          console.log(`Changing completed of todo item ${id}`);
-          console.table(todo);
           todo.completed = !todo.completed;
         }
         return todo;
@@ -40,10 +37,25 @@ class App extends Component {
   }
   
   deleteItem = (id) => {
-    console.log(`${id} to be deleted`);
     this.setState({
       todos: this.state.todos.filter(todo => todo.id !== id)
     });
+  }
+
+  addTodoItem = (title) =>{
+    let max = 0;
+    this.state.todos.forEach((todo) => {
+      if (todo.id > max){
+      max = todo.id;
+    }});
+    const newTodo = {
+      id: max + 1,
+      title: title,
+      completed: false
+    };
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    })
   }
 
   render() {
@@ -51,7 +63,7 @@ class App extends Component {
       <div className="App">
         <div className='container'>
         <Header></Header>
-        <AddTodoItem></AddTodoItem>
+        <AddTodoItem addTodoItem={this.addTodoItem}></AddTodoItem>
         <Todos todos={this.state.todos} 
         toggleCompleted={this.toggleCompleted}
         deleteItem={this.deleteItem}

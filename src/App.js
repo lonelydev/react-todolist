@@ -1,8 +1,10 @@
 import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Todos from './components/Todos';
 import React, {Component} from 'react';
 import Header from './components/layout/Header';
 import AddTodoItem from './components/AddTodoItem';
+import About from './components/pages/About';
 
 class App extends Component {
   state = {
@@ -60,16 +62,24 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
         <div className='container'>
         <Header></Header>
-        <AddTodoItem addTodoItem={this.addTodoItem}></AddTodoItem>
-        <Todos todos={this.state.todos} 
-        toggleCompleted={this.toggleCompleted}
-        deleteItem={this.deleteItem}
-        />
+        <Route exact path="/" render={
+          props => (
+          <React.Fragment>
+            <AddTodoItem addTodoItem={this.addTodoItem}></AddTodoItem>
+            <Todos todos={this.state.todos} 
+            toggleCompleted={this.toggleCompleted}
+            deleteItem={this.deleteItem}/>
+          </React.Fragment>
+        )}></Route>
+        <Route path="/about" component={About}>
+        </Route>
         </div>
       </div>
+      </Router>
       );
   }
 }

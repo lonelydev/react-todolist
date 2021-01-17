@@ -2,6 +2,7 @@ import './App.css';
 import Todos from './components/Todos';
 import React, {Component} from 'react';
 import Header from './components/layout/Header';
+import AddTodoItem from './components/AddTodoItem';
 
 class App extends Component {
   state = {
@@ -48,11 +49,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className='container'>
         <Header></Header>
+        <AddTodoItem></AddTodoItem>
         <Todos todos={this.state.todos} 
         toggleCompleted={this.toggleCompleted}
         deleteItem={this.deleteItem}
         />
+        </div>
       </div>
       );
   }

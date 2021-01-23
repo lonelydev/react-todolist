@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 export class AddTodoItem extends Component {
     state = {
@@ -47,5 +49,9 @@ const formStyle = {
 const inputTextFieldStyle = {flex: '10', padding: '5px'};
 
 const submitButtonStyle = {flex: '1'};
+
+AddTodoItem.propTypes = {
+    addTodo: PropTypes.func.isRequired
+}
 
 export default AddTodoItem;
